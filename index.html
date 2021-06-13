@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AFIDs: a standardized framework for evaluating anatomical correspondence between primate brains.</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@1.12.0/dist/quasar.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qflashcard@1.0.1/dist/index.min.css" rel="stylesheet" type="text/css">
+
+  <link rel='shortcut icon' type='image/x-icon' href="/favicon.svg" />
+  <style>
+    [v-cloak] {display: none}
+
+    .my-logo-font {
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    .my-font {
+      font-family: 'Roboto', sans-serif;
+    }
+    .my-image {
+      filter: grayscale(70%) brightness(80%) contrast(120%);
+    }
+
+    .box-shadow:hover {
+      box-shadow: 3px 3px 3px rgba(0,0,0,0.2) !important;
+    }
+
+    .intro {
+      background: url(./img/pattern1.png);
+      background-size: cover;
+      background-position: 50%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    .custom_tab {
+      width: 80px;
+      min-height:50px !important;
+      color: white
+    }
+  </style>
+  <style>
+    html, body {
+      margin:0;
+      font-size: 18px;
+    }
+    .b {
+      fill: rgb(59,81,94);
+    }
+    .a {
+      fill: rgba(83,91,96,0.5);
+    }
+  </style>
+
+<script>
+  window.quasarConfig = {
+    brand: {
+      primary: '#000000',
+      secondary: '#26A69A',
+      accent: '#C10015',
+      dark: '#000000',
+      positive: '#21BA45',
+      negative: '#C10015',
+      info: '#31CCEC',
+      warning: '#F2C037'
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <div id="q-app">
+
+    <q-layout v-cloak view="lHh lpr lFf">
+
+      <q-page-container>
+        <q-page>
+
+          <!-- Page 1 -->
+          <div class="q-px-md bg-primary" >
+
+            <div class="q-px-xl q-pt-xl bg-primary" id="page_1" >
+
+              <!-- Titel -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9" >
+                  <span class="text-left e" style="font-size: 36px; color:white">AFIDs: a standardized framework for 
+                    evaluating anatomical correspondence between primate brains
+                  </span>
+                </div>
+
+                <div class="col-md-2" ></div>
+              </div>
+
+              <!-- Authors -->
+              <div class="q-pb-md row justify-left">
+
+                <div class="col-md-1"></div>
+
+                <div class="q-py-sm col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-h6 text-weight-light" style="color:white">Borna Mahmoudian, Nikoloz Sirmpilatze, Mohamad Abbass, 
+                    Sarah Allarakhia, Greydon Gilmore, Geetika Gupta, Katja Heuer, P. Christiaan Klink, Roberto Toro, & Jonathan Lau 
+                  </span>
+                </div>
+
+                <div class="col-md-2"></div>
+              </div>
+
+              <!-- Links to poster pdf and jitsi chat -->
+              <div class="row justify-left">
+
+                <div class="col-md-1"></div>
+
+                <div class="col-12 col-lg-6 col-md-9 text-left">
+                  <q-btn flat dense no-caps class="text-weight-regular q-mr-lg q-px-md q-py-none" type="a" target="_blank" href="https://mattermost.brainhack.org/brainhack/channels/afids-macaca" size="lg"
+                    :style="'background:'+ theme_color +'; color: white; font-size: 21px;'" label="Chat with us on mattermost" >
+                  </q-btn>
+                  <q-btn flat dense no-caps class="text-weight-regular q-px-md q-py-none" type="a" target="_blank" href="https://github.com/afids/afids-macaca-ohbm2021/blob/master/img/AFIDS_poster_OHBM_2021.pdf" size="lg"
+                    :style="'background:'+ theme_color +'; color: white'" label="Our poster as PDF" >
+                  </q-btn>
+                </div>
+
+                <div class="col-12 col-md-2"></div>
+              </div>
+
+              <!-- Text Section 1: Intro -->
+              <div class="q-pb-none row justify-left">
+
+                <div class="col-md-1"></div>
+
+                <div class="q-pt-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white">‪Establishing accurate spatial 
+                    correspondences across brains is a fundamental step in neuroscience research. 
+                    Current methods use sophisticated algorithms to perform registrations between brains, providing a mapping between modalities, 
+                    subjects, template spaces, and even different species. However, the accuracy of these mappings varies widely depending on 
+                    factors such as the image quality, the registration algorithm, and its parameters 
+                    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2747506/" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">(Klein et al., 2009)</a>. 
+                    To quantify registration accuracy, a point-based set of 32 anatomical landmarks, termed anatomical fiducials (AFIDs), 
+                    has recently been described and validated for human magnetic resonance imaging (MRI) datasets
+                    <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1002/hbm.24693" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">(Lau et al., 2019)</a>.
+                  </span>
+                </div>
+
+                <div class="col-md-2"></div>
+              </div>
+
+              <!-- Image 1 -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/1_previous_work.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Page 2 -->
+          <div class="q-px-md bg-primary" >
+            <div class="q-px-xl q-pt-xl bg-primary" id="page_2" >
+
+              <!-- Text section 2 -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white">‪In this study, 
+                    we sought to bridge the gap between human and animal models in neuroscience research by extending 
+                    the AFIDs framework to a widely used non-human primate model, the macaques.
+                  </span>
+                </div>
+
+                <div class="col-md-1" ></div>
+              </div>
+
+              <!-- Image 2a -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/2a_human_to_macaque.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+
+              </div>
+
+               <!-- Image 2b -->
+               <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/2b_human_to_macaque.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Page 3 -->
+          <div class="q-px-md bg-primary" >
+            <div class="q-px-xl q-pt-md bg-primary" id="page_3" >
+
+              <!-- Text section 3 -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white">Inspired by our work with 
+                    <a href="https://afids.github.io/afids-protocol/afids_protocol/human_protocol.html" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">human data</a>,
+                    we first determined whether the same set of 32 AFIDs could be placed in commonly used macaque MRI datasets and developed an 
+                    <a href="https://afids.github.io/afids-protocol/afids_protocol/macaca_protocol.html" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">online protocol</a> 
+                    for training new users. Facilitated by the 
+                    <a href="https://brain-web.github.io" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">BrainWeb</a> 
+                    collaborative space, we recruited 8 raters and set out to validate the protocol on a set of publicly available macaque neuroimaging datasets 
+                    and brain templates: D99 , INIA19, MNI macaque, NMTv1.3, and Yerkes19 (more information on the templates
+                    <a href="https://github.com/PRIME-RE/RheMAP" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">here</a>) 
+                    as well as 8 single subjects (available as part of the 
+                    <a href="https://fcon_1000.projects.nitrc.org/indi/indiPRIME.html" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">PRIME-DE collection</a>, 
+                    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6231397/" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">Milham et al. 2018)</a>. 
+                    Every rater placed a set of 32 AFIDs per brain using the open source software 
+                    <a href="https://www.slicer.org/" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">3D Slicer</a> 
+                    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3466397/" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">(Fedorov et al 2012)</a>. 
+                    To control for rater reliability, raters placed the AFIDs on each scan twice, in two independent sessions.
+                  </span>
+                </div>
+
+                <div class="col-md-1" ></div>
+              </div>
+
+              <!-- Image 3 -->
+              <div class="row justify-left q-px-none" >
+                <div class="col-md-1 col-lg-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/3_workflow.svg" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+    
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Page 4 -->
+          <div class="q-px-md bg-primary" >
+            <div class="q-px-xl q-pt-md bg-primary" id="page_4" >
+
+              <!-- Text section 4 -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white">We followed the same protocol for validation as used 
+                    in the original human study, quantifying the point placement accuracy as AFLE (AFID localization error). 
+                    The utility of the AFIDs protocol was demonstrated by using these placed AFIDs to quantify template-to-template registration error, 
+                    termed AFRE (AFID registration error), using pre-computed warps available through the 
+                    <a href="https://github.com/PRIME-RE/RheMAP" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">RheMAP project</a> 
+                    <a href="https://zenodo.org/record/3786357" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">(Sirmpilatze and Klink, 2020)</a>.
+                  </span>
+                </div>
+
+                <div class="col-md-1" ></div>
+              </div>
+
+              <!-- Image 4a -->
+              <div class="row justify-left q-px-none" >
+                <div class="col-md-1 col-lg-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/4a_methods.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+    
+              </div>
+
+              <!-- Image 4b -->
+              <div class="row justify-left q-px-none" >
+                <div class="col-md-1 col-lg-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/4b_methods.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+    
+              </div>
+
+              <!-- Image 4c -->
+              <div class="row justify-left q-px-none" >
+                <div class="col-md-1 col-lg-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/4c_methods.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+    
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Page 5 -->
+          <div class="q-px-md bg-primary" >
+            <div class="q-px-xl q-pt-sm q-pb-xl bg-primary" id="page_5" >
+
+              <!-- Text section 5a -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white">Using our extensive illustrated 
+                    <a href="https://afids.github.io/afids-protocol/afids_protocol/macaca_protocol.html" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">protocol</a> 
+                    for the precise placement of 32 anatomical fiducials in macaque brains, users were able to place the AFIDs with voxel-level accuracy, 
+                    i.e. AFLE = 0.42 +/- 0.25 mm across all templates and AFIDs.
+                  </span>
+                </div>
+
+                <div class="col-md-1" ></div>
+              </div>
+
+              <!-- Image 5a -->
+              <div class="row justify-left q-px-none" >
+                <div class="col-md-1 col-lg-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/5a_results_AFLE.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+    
+              </div>
+
+              <!-- Text section 5b -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white"> The AFRE for template-to-template 
+                    linear (affine) registration was 1.03 +/- 0.49 across all template pairs. 
+                    The addition of a non-linear registration step (ANTs Symmetric Diffeomorphic registration, 
+                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S1361841507000606" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">Avants et al., 2008)</a>  
+                    reduced the AFRE to 0.68 +/- 0.43.
+                  </span>
+                </div>
+
+                <div class="col-md-1" ></div>
+              </div>
+
+              <!-- Image 5b -->
+              <div class="row justify-left q-px-none" >
+                <div class="col-md-1 col-lg-1" ></div>
+
+                <div class="q-pt-md q-px-none col-12 col-lg-6 col-md-9" >
+                  <q-img class="q-px-xl q-pt-md q-py-sm" style="width:100%;" src="./img/5b_results_AFRE.png" >
+                  </q-img>
+                </div>
+
+                <div class="col-md-1" ></div>
+    
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- Page 6 -->
+          <div class="q-px-md bg-primary" >
+            <div class="q-px-xl q-pt-xl bg-primary" id="page_6" >
+
+              <!-- Text section 2 -->
+              <div class="row justify-left" >
+                <div class="col-md-1" ></div>
+
+                <div class="q-py-xl col-12 col-lg-6 col-md-9">
+                  <span class="text-center text-body1 text-weight-light" style="color:white">‪The AFIDs protocol has been successfully extended to macaques, 
+                    allowing us to precisely place the same original set of point landmarks first described in humans. 
+                    This open protocol holds value for a broad number of applications, including creating correspondences across  macaque brains, 
+                    refined stereotactic targeting of deep brain structures, and teaching neuroanatomy. 
+                    The point-to-point distances between AFIDs may also serve as a means for quantifying cross-species anatomical similarities 
+                    and differences and is the subject of ongoing work. The raw data and code are available on
+                    <a href="https://github.com/afids/afids-macaca" target="_blank" style="text-decoration: none; cursor: pointer; color: cyan">github</a>. 
+
+
+                  </span>
+                </div>
+
+                <div class="col-md-1" ></div>
+              </div>
+
+            </div>
+          </div>
+
+        </q-page>
+      </q-page-container>
+    </q-layout>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@1.12.0/dist/quasar.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qflashcard@1.0.1/dist/index.umd.min.js"></script>
+
+  <script>
+    const { getScrollTarget, setScrollPosition } = Quasar.scroll
+
+    app = new Vue({
+      el: "#q-app",
+      data() {
+        return {
+          selected_tab: 't_0',
+          bg_color: '#4b4f51',
+          hover: false,
+          active: false,
+          theme_color: '#56b4e9',
+          background_style: '#56b4e9',
+          paper_heading_1: [],
+          paper_heading_color_1: '#4b4f51',
+          headerState: false,
+        }
+      },
+      methods: {
+        scrollToElement(id) {
+          let el = document.getElementById(id)
+          const target = getScrollTarget(el)
+          const offset = el.offsetTop + 3
+          const duration = 900
+          setScrollPosition(target, offset, duration)
+        },
+        goTo(url){
+          window.location.href = url;
+        },
+        scrollFunction (pos) {
+          this.headerState = (pos>300);
+        }
+      }
+    });
+
+  </script>
+
+
+</body>
+
+</html>
