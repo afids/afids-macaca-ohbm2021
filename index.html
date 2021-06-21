@@ -313,7 +313,7 @@
 
                 <div class="q-pb-lg q-px-none col-12 col-lg-6 col-md-9" >
                   <video id="placing" width="100%" height="100%" poster="./img/placing_SIPF_frame0.png" autoplay loop muted>
-                    <source src="https://raw.githubusercontent.com/afids/afids-macaca-ohbm2021/main/img/placing_SIPF_speedx2.mp4" type="video/mp4">
+                    <source src="./img/placing_SIPF_speedx2.webm" type="video/webm">
                   </video>
                 </div>
 
@@ -530,11 +530,11 @@
       function() 
       {
         document.getElementById("placing").play();
-      }, 3000);
+      }, 1000);
     // play slower
     const vid = document.getElementById("placing");
       vid.onplaying = function () {
-      vid.playbackRate = 0.5;
+      vid.playbackRate = 1;
     };
   </script>
 
