@@ -312,8 +312,8 @@
                 <div class="col-md-1" ></div>
 
                 <div class="q-pb-lg q-px-none col-12 col-lg-6 col-md-9" >
-                  <video width="100%" poster="./img/placing_SIPF_frame0.png" autoplay loop muted>
-                    <source type="video/mp4" src="./img/placing_SIPF_speedx2.mp4">
+                  <video id="placing" width="100%" height="100%" poster="./img/placing_SIPF_frame0.png" autoplay loop muted>
+                    <source src="https://raw.githubusercontent.com/afids/afids-macaca-ohbm2021/main/img/placing_SIPF_speedx2.mp4" type="video/mp4">
                   </video>
                 </div>
 
@@ -519,12 +519,24 @@
         },
         scrollFunction (pos) {
           this.headerState = (pos>300);
-        }
+        },
       }
     });
 
   </script>
 
+  <script>
+    setTimeout(
+      function() 
+      {
+        document.getElementById("placing").play();
+      }, 3000);
+    // play slower
+    const vid = document.getElementById("placing");
+      vid.onplaying = function () {
+      vid.playbackRate = 0.5;
+    };
+  </script>
 
 </body>
 
